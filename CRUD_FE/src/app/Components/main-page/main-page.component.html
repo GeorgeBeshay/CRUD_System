@@ -1,4 +1,63 @@
 <h1 class="page-title">CRUD System</h1>
-<div class="input-container">
-  <input type="text" />
-</div>
+<form>
+  <div class="inputs-container">
+    <div>
+      <label for="product-name" class="input-placeholder">Product Name</label>
+      <input type="text" id="product-name" />
+    </div>
+    <div>
+      <label for="product-amount" class="input-placeholder">Amount</label>
+      <input type="number" id="product-amount" />
+    </div>
+    <div>
+      <label for="product-price" class="input-placeholder">Price</label>
+      <input type="number" id="product-price" />
+    </div>
+    <div>
+      <label for="product-category" class="input-placeholder">Category</label>
+      <input type="text" id="product-category" />
+    </div>
+    <div>
+      <label for="product-discount" class="input-placeholder">Discount %</label>
+      <input type="number" id="product-discount" />
+    </div>
+    <div>
+      <label for="product-seller" class="input-placeholder">Seller</label>
+      <input type="text" id="product-seller" />
+    </div>
+  </div>
+  <div class="buttons-container">
+    <button type="submit" class="submit">Add Product</button>
+    <button type="reset">Clear</button>
+  </div>
+</form>
+<table>
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Discount</th>
+      <th>Amount</th>
+      <th>Category</th>
+      <th>Seller</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Philo</td>
+      <td>142.5$</td>
+      <td>54.5$</td>
+      <td>7</td>
+      <td>Electronics</td>
+      <td>Amazon</td>
+      <td>
+        <i class="fa-solid fa-pen-to-square"></i>
+        <i class="fa-solid fa-trash"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
