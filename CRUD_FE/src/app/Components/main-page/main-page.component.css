@@ -85,13 +85,22 @@ form .buttons-container button:not(.submit):hover {
 }
 table {
   width: 95%;
-  margin: 50px auto 0;
+  margin: 50px auto;
+  border-collapse: collapse;
 }
 table caption {
   text-align: left;
 }
 table thead tr th,
 table tbody tr td {
-  padding: 8px;
+  padding: 10px;
   text-align: center;
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -ms-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+table tbody tr:hover > td {
+  background-color: rgba(0, 0, 0, 0.15);
 }
