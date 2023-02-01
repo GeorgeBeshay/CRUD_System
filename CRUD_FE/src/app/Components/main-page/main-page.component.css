@@ -1,0 +1,11 @@
+.page-title {
+  margin-block: 40px;
+  font-weight: normal;
+  text-align: center;
+}
+.input-container {
+  width: 95%;
+  margin: auto;
+  padding: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.675);
+}

@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #b00020;
+  --secondary-color: #175886;
+  --main-bg: #eee;
+}
+::selection {
+  color: #fff;
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #aaa;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: sans-serif;
+  background-color: var(--main-bg);
+}
+a {
+  text-decoration: none;
+}
+span {
+  display: inline-block;
+}
