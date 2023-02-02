@@ -2,28 +2,74 @@
 <form>
   <div class="inputs-container">
     <div>
-      <label for="product-name" class="input-placeholder">Product Name</label>
-      <input type="text" id="product-name" />
+      <label id="nameLabel" for="product-name" class="input-placeholder">
+        Product Name
+      </label>
+      <input
+        type="text"
+        id="product-name"
+        (focus)="placeHolderFocus('nameLabel')"
+        (blur)="placeHolderBlur('nameLabel')"
+      />
     </div>
     <div>
-      <label for="product-amount" class="input-placeholder">Amount</label>
-      <input type="number" id="product-amount" />
+      <label id="amountLabel" for="product-amount" class="input-placeholder">
+        Amount
+      </label>
+      <input
+        type="number"
+        id="product-amount"
+        (focus)="placeHolderFocus('amountLabel')"
+        (blur)="placeHolderBlur('amountLabel')"
+      />
     </div>
     <div>
-      <label for="product-price" class="input-placeholder">Price</label>
-      <input type="number" id="product-price" />
+      <label id="priceLabel" for="product-price" class="input-placeholder">
+        Price
+      </label>
+      <input
+        type="number"
+        id="product-price"
+        (focus)="placeHolderFocus('priceLabel')"
+        (blur)="placeHolderBlur('priceLabel')"
+      />
     </div>
     <div>
-      <label for="product-category" class="input-placeholder">Category</label>
-      <input type="text" id="product-category" />
+      <label id="categLabel" for="product-category" class="input-placeholder">
+        Category
+      </label>
+      <input
+        type="text"
+        id="product-category"
+        (focus)="placeHolderFocus('categLabel')"
+        (blur)="placeHolderBlur('categLabel')"
+      />
     </div>
     <div>
-      <label for="product-discount" class="input-placeholder">Discount %</label>
-      <input type="number" id="product-discount" />
+      <label
+        id="discountLabel"
+        for="product-discount"
+        class="input-placeholder"
+      >
+        Discount %
+      </label>
+      <input
+        type="number"
+        id="product-discount"
+        (focus)="placeHolderFocus('discountLabel')"
+        (blur)="placeHolderBlur('discountLabel')"
+      />
     </div>
     <div>
-      <label for="product-seller" class="input-placeholder">Seller</label>
-      <input type="text" id="product-seller" />
+      <label id="sellerLabel" for="product-seller" class="input-placeholder">
+        Seller
+      </label>
+      <input
+        type="text"
+        id="product-seller"
+        (focus)="placeHolderFocus('sellerLabel')"
+        (blur)="placeHolderBlur('sellerLabel')"
+      />
     </div>
   </div>
   <div class="buttons-container">
@@ -35,7 +81,8 @@
 </form>
 <table>
   <caption>
-    Total: 1
+    Total:
+    <span>2</span>
   </caption>
   <thead>
     <tr>
@@ -54,8 +101,8 @@
     <tr>
       <td>1</td>
       <td>Grooking Algorithms</td>
-      <td>142.5$</td>
-      <td>54.5$</td>
+      <td><span>54.2</span><sup>$</sup></td>
+      <td><span>54.2</span><sup>$</sup></td>
       <td>7</td>
       <td>Electronics</td>
       <td>Amazon</td>
@@ -71,3 +118,17 @@
     </tr>
   </tbody>
 </table>
+<footer>
+  <p>
+    Copyrights &copy; <span>{{ currentYear }}</span>
+  </p>
+  <p>All Rights Reserved &reg;</p>
+  <p>
+    Made By
+    <a href="https://github.com/GeorgeBeshay/" target="_blank">George Samy</a>
+    &
+    <a href="https://github.com/PhilopaterHany/" target="_blank">
+      Philopater Hany
+    </a>
+  </p>
+</footer>
