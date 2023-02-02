@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aboreto&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap");
 :root {
   --primary-color: #b00020;
   --secondary-color: #175886;
@@ -27,7 +27,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "IBM Plex Serif", serif;
   background-color: var(--main-bg);
 }
 a {
