@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.*;
 import org.springframework.stereotype.Service;
 import components.*;
-import java.util.*;
 import filter.*;
 
 @Service
@@ -32,7 +31,7 @@ public class ServerCore {
 			System.out.println("Product Created Successfully.");
 			return true;
 		} else {
-			System.out.println("Product Creation Failed, Id was already taken.");
+			System.out.println("Product Creation Failed, Id is already taken.");
 			return false;
 		}
 	}
