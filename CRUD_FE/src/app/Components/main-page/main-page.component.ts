@@ -1,14 +1,20 @@
 import { Component } from '@angular/core';
 import * as JsBarcode from 'jsbarcode';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
+import { ServerCallerService } from 'src/app/Services/server-caller.service';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent {
+  private serverCaller: ServerCallerService;
+  constructor(private http: HttpClient) {
+    this.serverCaller = new ServerCallerService(this.http);
+    // use this.serverCaller.'requestName'
+  }
   currentYear: any = new Date().getFullYear();
-
   ngOnInit() {
     let data: string = '123456';
     JsBarcode('#barcode', data, {
