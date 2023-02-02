@@ -27,7 +27,9 @@
     </div>
   </div>
   <div class="buttons-container">
-    <button type="submit" class="submit">Add Product</button>
+    <button type="submit" class="submit" (click)="addProduct()">
+      Add Product
+    </button>
     <button type="reset">Clear</button>
   </div>
 </form>
@@ -59,8 +61,12 @@
       <td>Amazon</td>
       <td><svg id="barcode"></svg></td>
       <td>
-        <i class="fa-solid fa-pen-to-square"></i>
-        <i class="fa-solid fa-trash"></i>
+        <button (click)="editProduct()">
+          <mat-icon class="edit-btn">edit_square</mat-icon>
+        </button>
+        <button (click)="deleteProduct()">
+          <mat-icon class="delete-btn">delete</mat-icon>
+        </button>
       </td>
     </tr>
   </tbody>
