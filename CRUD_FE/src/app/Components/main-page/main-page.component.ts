@@ -7,31 +7,20 @@ import * as JsBarcode from 'jsbarcode';
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent {
-  px2mmFactor: number | undefined;
   ngOnInit() {
-    this.px2mmFactor = this.calcPx2MmFactor();
     let data: string = '123456';
     JsBarcode('#barcode', data, {
       format: 'msi',
-      height: 10 * this.px2mmFactor,
-      width: 0.5 * this.px2mmFactor,
+      height: 35,
+      width: 1.5,
       text: '- ' + data + ' -',
       background: 'transparent',
       font: 'monospace',
       fontOptions: 'bold',
       fontSize: 16,
       lineColor: 'black',
-      margin: this.px2mmFactor,
-      textMargin: this.px2mmFactor,
+      margin: 2,
+      textMargin: 2,
     });
-  }
-  private calcPx2MmFactor() {
-    let e = document.createElement('div');
-    e.style.position = 'absolute';
-    e.style.width = '75mm';
-    document.body.appendChild(e);
-    let rect = e.getBoundingClientRect();
-    document.body.removeChild(e);
-    return rect.width / 100;
   }
 }
