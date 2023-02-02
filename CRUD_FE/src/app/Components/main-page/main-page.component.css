@@ -47,16 +47,16 @@ form .inputs-container > div label.active {
   position: relative;
   top: 0;
   left: 0;
-  color: red;
+  color: var(--secondary-color);
 }
 form .inputs-container > div input {
   width: 100%;
   padding: 10px;
   border: 2px solid;
-  border-color: transparent transparent red transparent;
+  border-color: transparent transparent var(--primary-color) transparent;
 }
 form .inputs-container > div input.active {
-  border-color: red;
+  border-color: var(--primary-color);
 }
 form .buttons-container {
   display: flex;
@@ -74,20 +74,20 @@ form .buttons-container button {
   transition: 0.25s ease-in-out;
 }
 form .buttons-container button.submit {
-  color: green;
-  border: 2px solid green;
+  color: var(--green);
+  border: 2px solid var(--green);
 }
 form .buttons-container button.submit:hover {
   color: #fff;
-  background-color: green;
+  background-color: var(--green);
 }
 form .buttons-container button:not(.submit) {
-  color: red;
-  border: 2px solid red;
+  color: var(--red);
+  border: 2px solid var(--red);
 }
 form .buttons-container button:not(.submit):hover {
   color: #fff;
-  background-color: red;
+  background-color: var(--red);
 }
 table {
   width: 95%;
@@ -111,7 +111,7 @@ table tbody tr:hover td {
   background-color: rgba(0, 0, 0, 0.15);
 }
 table tbody tr td sup {
-  color: green;
+  color: var(--green);
 }
 table tbody tr td button {
   display: inline-flex;
@@ -123,10 +123,10 @@ table tbody tr td button {
   cursor: pointer;
 }
 table tbody tr td button .delete-btn {
-  color: red;
+  color: var(--red);
 }
 table tbody tr td button .edit-btn {
-  color: green;
+  color: var(--green);
 }
 footer {
   display: flex;
@@ -135,7 +135,7 @@ footer {
   flex-direction: column;
   gap: 10px;
   padding: 20px 10px;
-  background-color: #000;
+  background-color: #08111a;
   color: #fff;
 }
 footer p {
