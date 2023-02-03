@@ -7,7 +7,7 @@ form {
   width: 95%;
   margin: auto;
   padding: 25px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.675);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
 form .inputs-container {
   display: flex;
@@ -34,7 +34,7 @@ form .inputs-container > div label {
   position: relative;
   top: 29px;
   left: 10px;
-  color: #777;
+  color: #000;
   font-size: 15px;
   cursor: pointer;
   -webkit-transition: 0.25s ease-in-out;
@@ -52,11 +52,12 @@ form .inputs-container > div label.active {
 form .inputs-container > div input {
   width: 100%;
   padding: 10px;
-  border: 2px solid;
-  border-color: transparent transparent var(--primary-color) transparent;
+  font-weight: 700;
+  border: 3px solid;
+  border-color: transparent transparent var(--secondary-color) transparent;
 }
 form .inputs-container > div input.active {
-  border-color: var(--primary-color);
+  border-color: var(--secondary-color);
 }
 form .buttons-container {
   display: flex;
@@ -67,22 +68,27 @@ form .buttons-container {
 form .buttons-container button {
   padding: 10px;
   cursor: pointer;
+  background-color: transparent;
   -webkit-transition: 0.25s ease-in-out;
   -moz-transition: 0.25s ease-in-out;
   -ms-transition: 0.25s ease-in-out;
   -o-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
 }
+form .buttons-container button:hover {
+  letter-spacing: 2px;
+  padding: 10px 20px;
+}
 form .buttons-container button.submit {
   color: var(--green);
   border: 2px solid var(--green);
 }
 form .buttons-container button.submit:hover {
-  color: #fff;
+  color: #000;
   background-color: var(--green);
 }
 form .buttons-container button:not(.submit) {
-  color: var(--red);
+  color: #fff;
   border: 2px solid var(--red);
 }
 form .buttons-container button:not(.submit):hover {
@@ -93,13 +99,40 @@ table {
   width: 95%;
   margin: 50px auto;
   border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
 table caption {
   text-align: left;
+  margin-bottom: 15px;
+}
+table caption button {
+  background-color: transparent;
+  border: none;
+  color: var(--red);
+  font-size: 52px;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+}
+table caption button * {
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+}
+table caption h4 {
+  display: inline-block;
+  margin-inline-start: 10px;
+  position: relative;
 }
 table thead tr th,
 table tbody tr td {
   padding: 10px;
+  border-bottom: 1px solid var(--secondary-color);
   text-align: center;
   -webkit-transition: 0.25s ease-in-out;
   -moz-transition: 0.25s ease-in-out;
@@ -135,13 +168,15 @@ footer {
   flex-direction: column;
   gap: 10px;
   padding: 20px 10px;
-  background-color: #08111a;
+  background-color: var(--main-bg);
   color: #fff;
 }
 footer p {
   margin: 0;
 }
 footer p a {
-  color: var(--primary-color);
-  font-weight: bold;
+  font-family: "Pacifico", cursive;
+  /* font-weight: bold; */
+  font-size: 22px;
+  color: var(--secondary-color);
 }

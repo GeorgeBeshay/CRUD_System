@@ -1,15 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Aboreto&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aboreto&family=IBM+Plex+Serif:wght@400;500;600;700&family=Pacifico&display=swap");
 :root {
-  --primary-color: #4129cc;
-  --secondary-color: #ffc300;
-  --green: #136f63;
+  --primary-color: #6440fb;
+  --secondary-color: #00ff84;
+  --green: #00ff84;
   --red: #c1121f;
-  --main-bg: #778da9;
+  --main-bg: #1d0f42;
 }
 ::selection {
-  color: #fff;
-  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  background-color: #000;
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -45,6 +45,7 @@ button {
 input {
   padding: 5px;
   outline: none;
+  background-color: #999;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

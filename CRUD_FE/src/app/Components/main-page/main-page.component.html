@@ -81,8 +81,8 @@
 </form>
 <table>
   <caption>
-    Total:
-    <span>2</span>
+    <button (click)="emptyDb()"><mat-icon>delete_forever</mat-icon></button>
+    <h4>Total: <span>2</span></h4>
   </caption>
   <thead>
     <tr>
@@ -101,9 +101,27 @@
     <tr>
       <td>1</td>
       <td>Grooking Algorithms</td>
-      <td><span>54.2</span><sup>$</sup></td>
+      <td><span>154.2</span><sup>$</sup></td>
       <td><span>54.2</span><sup>$</sup></td>
       <td>7</td>
+      <td>Books</td>
+      <td>Amazon</td>
+      <td><svg id="barcode"></svg></td>
+      <td>
+        <button (click)="editProduct()">
+          <mat-icon class="edit-btn">edit_square</mat-icon>
+        </button>
+        <button (click)="deleteProduct()">
+          <mat-icon class="delete-btn">delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>MacBook Pro</td>
+      <td><span>252.99</span><sup>$</sup></td>
+      <td><span>22.99</span><sup>$</sup></td>
+      <td>5</td>
       <td>Electronics</td>
       <td>Amazon</td>
       <td><svg id="barcode"></svg></td>

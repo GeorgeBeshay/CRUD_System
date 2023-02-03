@@ -16,17 +16,17 @@ export class MainPageComponent {
   }
   currentYear: any = new Date().getFullYear();
   ngOnInit() {
-    let data: string = '123456';
+    let data: string = '512384';
     JsBarcode('#barcode', data, {
       format: 'msi',
       height: 35,
       width: 1.5,
       text: '- ' + data + ' -',
       background: 'transparent',
+      lineColor: '#fff',
       font: 'monospace',
       fontOptions: 'bold',
       fontSize: 16,
-      lineColor: 'black',
       margin: 2,
       textMargin: 2,
     });
@@ -46,6 +46,26 @@ export class MainPageComponent {
     }
   }
 
+  emptyDb() {
+    Swal.fire({
+      title: 'Are you sure you want to delete all products?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'All Products have been deleted successfully.',
+          'success'
+        );
+      }
+    });
+  }
+
   addProduct() {
     document.forms[0].reset();
     Swal.fire('Added!', 'Your Product has been added successfully.', 'success');
@@ -57,7 +77,7 @@ export class MainPageComponent {
 
   deleteProduct() {
     Swal.fire({
-      title: 'Are you sure?',
+      title: 'Are you sure you want to delete this product?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
