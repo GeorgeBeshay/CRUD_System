@@ -3,6 +3,8 @@ import * as JsBarcode from 'jsbarcode';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { ServerCallerService } from 'src/app/Services/server-caller.service';
+import { Product } from 'src/app/Interfaces/product';
+import { ProductsGeneratorService } from 'src/app/Services/products-generator.service';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -10,26 +12,33 @@ import { ServerCallerService } from 'src/app/Services/server-caller.service';
 })
 export class MainPageComponent {
   private serverCaller: ServerCallerService;
+  private productsGenerator: ProductsGeneratorService;
   constructor(private http: HttpClient) {
     this.serverCaller = new ServerCallerService(this.http);
+    this.productsGenerator = new ProductsGeneratorService();
     // use this.serverCaller.'requestName'
   }
   currentYear: any = new Date().getFullYear();
   ngOnInit() {
-    let data: string = '512384';
-    JsBarcode('#barcode', data, {
-      format: 'msi',
-      height: 35,
-      width: 1.5,
-      text: '- ' + data + ' -',
-      background: 'transparent',
-      lineColor: '#fff',
-      font: 'monospace',
-      fontOptions: 'bold',
-      fontSize: 16,
-      margin: 2,
-      textMargin: 2,
-    });
+    this.runApplication();
+    // let data: string = '512384';
+    // JsBarcode('#barcode', data, {
+    //   format: 'msi',
+    //   height: 35,
+    //   width: 1.5,
+    //   text: '- ' + data + ' -',
+    //   background: 'transparent',
+    //   lineColor: '#fff',
+    //   font: 'monospace',
+    //   fontOptions: 'bold',
+    //   fontSize: 16,
+    //   margin: 2,
+    //   textMargin: 2,
+    // });
+  }
+
+  async runApplication() {
+    this.productsGenerator.generateProdcuts(await this.serverCaller.load());
   }
 
   placeHolderFocus(id: any) {
