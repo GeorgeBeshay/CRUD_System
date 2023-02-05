@@ -35,13 +35,17 @@ export class ServerCallerService {
     );
   }
   // Function requests to check for updates.
+  async emptyDB() {
+    return await firstValueFrom(this.http.post(this.url + 'empty', null));
+  }
+  // Function requests to check for updates.
   async checkForUpdates() {
     return await firstValueFrom(
       this.http.post<boolean>(this.url + 'checkForUpdates', null)
     );
   }
   // Function requests to search among products based on a specific condition
-  async search(condition: number, str: string) {
+  async search(condition: any, str: any) {
     return await firstValueFrom(
       this.http.post<Product[]>(this.url + `search/${condition}/${str}`, null)
     );

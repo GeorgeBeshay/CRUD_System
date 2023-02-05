@@ -54,12 +54,16 @@ export class UtilitiesService {
     return product;
   }
 
+  refreshProducts(){
+    this.serverCaller.load();
+  }
+
   getSearchingData() {
     let searchingField = document.getElementById(
       'search-product'
     ) as HTMLInputElement;
     let searchAbout: string = searchingField.value;
-    let searchBy: number = 3;
+    let searchBy: number = 2;
     let searchByName = document.getElementById('by-name') as HTMLInputElement;
     let searchBySeller = document.getElementById(
       'by-seller'
@@ -68,8 +72,8 @@ export class UtilitiesService {
       'by-category'
     ) as HTMLInputElement;
     if (searchByName.checked) searchBy = 1;
-    else if (searchBySeller.checked) searchBy = 2;
-    return [searchAbout, searchBy];
+    else if (searchBySeller.checked) searchBy = 3;
+    return [searchBy, searchAbout];
   }
 
   filterNumberInput() {
@@ -88,6 +92,27 @@ export class UtilitiesService {
         }
       });
     }
+  }
+
+  emptyDb() {
+    Swal.fire({
+      title: 'Are you sure you want to delete all products?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'All Products have been deleted successfully.',
+          'success'
+        );
+        this.serverCaller.emptyDB();
+      }
+    });
   }
 
   generateBarcode() {

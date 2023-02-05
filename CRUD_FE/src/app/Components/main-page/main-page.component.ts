@@ -16,7 +16,7 @@ import { ViewEncapsulation } from '@angular/core';
 export class MainPageComponent {
   private serverCaller: ServerCallerService;
   private productsGenerator: ProductsGeneratorService;
-  private utilities: UtilitiesService;
+  protected utilities: UtilitiesService;
   constructor(private http: HttpClient) {
     this.serverCaller = new ServerCallerService(this.http);
     this.productsGenerator = new ProductsGeneratorService();
@@ -35,7 +35,6 @@ export class MainPageComponent {
 
   async runApplication() {
     this.productsGenerator.generateProdcuts(await this.serverCaller.load());
-    this.utilities.getSearchingData();
   }
 
   placeHolderFocus(id: any) {
@@ -52,35 +51,11 @@ export class MainPageComponent {
     }
   }
 
-  addProduct() {
-    this.utilities.addProduct();
-    // document.forms[0].reset();
-    // Swal.fire('Added!', 'Your Product has been added successfully.', 'success');
-  }
-
-  searchProduct() {
-    console.log('search product clicked');
-    this.utilities.getSearchingData();
-  }
-
-  emptyDb() {
-    Swal.fire({
-      title: 'Are you sure you want to delete all products?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonColor: '#d33',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'All Products have been deleted successfully.',
-          'success'
-        );
-      }
-    });
+  async searchProduct() {
+    let searchingData = this.utilities.getSearchingData();
+    this.productsGenerator.generateProdcuts(
+      await this.serverCaller.search(searchingData[0], searchingData[1])
+    );
   }
 
   editProduct() {

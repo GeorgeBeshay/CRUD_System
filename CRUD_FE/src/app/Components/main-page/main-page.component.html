@@ -79,13 +79,13 @@
     </div>
   </div>
   <div class="buttons-container">
-    <button type="submit" class="submit" (click)="addProduct()">
+    <button type="submit" class="submit" (click)="this.utilities.addProduct()">
       Add Product
     </button>
     <button type="reset">Clear</button>
   </div>
 </form>
-<form class="search-section" id ='search-form'>
+<form class="search-section" id="search-form">
   <div class="input-holder">
     <label id="searchLabel" for="search-product" class="input-placeholder">
       Search
@@ -99,7 +99,7 @@
   </div>
   <div class="radio-holder">
     <div>
-      <input type="radio" name="search-type" id="by-name" checked/>
+      <input type="radio" name="search-type" id="by-name" checked />
       <label for="by-name">By Name</label>
     </div>
     <div>
@@ -115,7 +115,9 @@
 </form>
 <table>
   <caption>
-    <button (click)="emptyDb()"><mat-icon>delete_forever</mat-icon></button>
+    <button (click)="this.utilities.emptyDb()">
+      <mat-icon>delete_forever</mat-icon>
+    </button>
     <h4>Total: <span id="products-count">2</span></h4>
   </caption>
   <thead>

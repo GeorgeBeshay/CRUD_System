@@ -68,6 +68,7 @@ public class ServerCore {
 	public ArrayList<Product> search(int condition, String str){
 		CriteriaFactory criteriaFactory = new CriteriaFactory();
 		Criteria requestedCriteria = criteriaFactory.getCriteria(condition);
+		System.out.println("Matching products have been loaded successfully");
 		return requestedCriteria.meetCriteria(productRepository.findAll(), str);
 	}
 	// ------------------------ Separator ------------------------
