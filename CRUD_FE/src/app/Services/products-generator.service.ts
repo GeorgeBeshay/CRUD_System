@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Product } from '../Interfaces/product';
 import * as JsBarcode from 'jsbarcode';
 import Swal from 'sweetalert2';
+import { ServerCallerService } from './server-caller.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsGeneratorService {
-  constructor() {}
+  constructor(private serverCaller: ServerCallerService) {}
 
   generateProdcuts(products: Product[]) {
     let tempProductsCount = document.getElementById(
@@ -78,13 +79,17 @@ export class ProductsGeneratorService {
 
       let tempEditButton = document.createElement('button');
       tempEditButton.classList.add('edit-btn');
-      tempEditButton.addEventListener('click', () => this.editProduct());
+      tempEditButton.addEventListener('click', () =>
+        this.editProduct(tempProduct)
+      );
       tempEditButton.appendChild(document.createTextNode('Edit'));
       tempAction.appendChild(tempEditButton);
 
       let tempDeleteButton = document.createElement('button');
       tempDeleteButton.classList.add('delete-btn');
-      tempDeleteButton.addEventListener('click', () => this.deleteProduct());
+      tempDeleteButton.addEventListener('click', () =>
+        this.deleteProduct(tempProduct)
+      );
       tempDeleteButton.appendChild(document.createTextNode('Delete'));
       tempAction.appendChild(tempDeleteButton);
 
@@ -110,11 +115,11 @@ export class ProductsGeneratorService {
   //   });
   // }
 
-  editProduct() {
+  editProduct(product: Product) {
     console.log('edit product clicked');
   }
 
-  deleteProduct() {
+  async deleteProduct(product: Product) {
     Swal.fire({
       title: 'Are you sure you want to delete this product?',
       text: "You won't be able to revert this!",
@@ -123,13 +128,15 @@ export class ProductsGeneratorService {
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Yes, delete it!',
       cancelButtonColor: '#d33',
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         Swal.fire(
           'Deleted!',
           'Your Product has been deleted successfully.',
           'success'
         );
+        await this.serverCaller.delete(product);
+        this.generateProdcuts(await this.serverCaller.load());
       }
     });
   }

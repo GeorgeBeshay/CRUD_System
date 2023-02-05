@@ -19,7 +19,7 @@ export class MainPageComponent {
   protected utilities: UtilitiesService;
   constructor(private http: HttpClient) {
     this.serverCaller = new ServerCallerService(this.http);
-    this.productsGenerator = new ProductsGeneratorService();
+    this.productsGenerator = new ProductsGeneratorService(this.serverCaller);
     this.utilities = new UtilitiesService(this.serverCaller);
     // use this.serverCaller.'requestName'
   }
@@ -56,29 +56,5 @@ export class MainPageComponent {
     this.productsGenerator.generateProdcuts(
       await this.serverCaller.search(searchingData[0], searchingData[1])
     );
-  }
-
-  editProduct() {
-    console.log('edit product clicked');
-  }
-
-  deleteProduct() {
-    Swal.fire({
-      title: 'Are you sure you want to delete this product?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonColor: '#d33',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your Product has been deleted successfully.',
-          'success'
-        );
-      }
-    });
   }
 }
