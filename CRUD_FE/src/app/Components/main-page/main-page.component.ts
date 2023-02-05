@@ -5,40 +5,37 @@ import { HttpClient } from '@angular/common/http';
 import { ServerCallerService } from 'src/app/Services/server-caller.service';
 import { Product } from 'src/app/Interfaces/product';
 import { ProductsGeneratorService } from 'src/app/Services/products-generator.service';
+import { UtilitiesService } from 'src/app/Services/utilities.service';
+import { ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class MainPageComponent {
   private serverCaller: ServerCallerService;
   private productsGenerator: ProductsGeneratorService;
+  private utilities: UtilitiesService;
   constructor(private http: HttpClient) {
     this.serverCaller = new ServerCallerService(this.http);
     this.productsGenerator = new ProductsGeneratorService();
+    this.utilities = new UtilitiesService(this.serverCaller);
     // use this.serverCaller.'requestName'
   }
   currentYear: any = new Date().getFullYear();
   ngOnInit() {
+    this.utilities.filterNumberInput();
+    let forms = document.forms;
+    for (let i = 0; i < forms.length; i++) {
+      forms[i].addEventListener('submit', (e) => e.preventDefault());
+    }
     this.runApplication();
-    // let data: string = '512384';
-    // JsBarcode('#barcode', data, {
-    //   format: 'msi',
-    //   height: 35,
-    //   width: 1.5,
-    //   text: '- ' + data + ' -',
-    //   background: 'transparent',
-    //   lineColor: '#fff',
-    //   font: 'monospace',
-    //   fontOptions: 'bold',
-    //   fontSize: 16,
-    //   margin: 2,
-    //   textMargin: 2,
-    // });
   }
 
   async runApplication() {
     this.productsGenerator.generateProdcuts(await this.serverCaller.load());
+    this.utilities.getSearchingData();
   }
 
   placeHolderFocus(id: any) {
@@ -56,12 +53,14 @@ export class MainPageComponent {
   }
 
   addProduct() {
-    document.forms[0].reset();
-    Swal.fire('Added!', 'Your Product has been added successfully.', 'success');
+    this.utilities.addProduct();
+    // document.forms[0].reset();
+    // Swal.fire('Added!', 'Your Product has been added successfully.', 'success');
   }
 
   searchProduct() {
     console.log('search product clicked');
+    this.utilities.getSearchingData();
   }
 
   emptyDb() {

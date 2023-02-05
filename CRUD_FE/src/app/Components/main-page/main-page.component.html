@@ -1,5 +1,5 @@
 <h1 class="page-title">CRUD System</h1>
-<form class="product-details">
+<form class="product-details" id="product-form">
   <div class="inputs-container">
     <div>
       <label id="nameLabel" for="product-name" class="input-placeholder">
@@ -10,6 +10,7 @@
         id="product-name"
         (focus)="placeHolderFocus('nameLabel')"
         (blur)="placeHolderBlur('nameLabel')"
+        required
       />
     </div>
     <div>
@@ -21,6 +22,7 @@
         id="product-amount"
         (focus)="placeHolderFocus('amountLabel')"
         (blur)="placeHolderBlur('amountLabel')"
+        required
       />
     </div>
     <div>
@@ -32,6 +34,7 @@
         id="product-price"
         (focus)="placeHolderFocus('priceLabel')"
         (blur)="placeHolderBlur('priceLabel')"
+        required
       />
     </div>
     <div>
@@ -43,6 +46,7 @@
         id="product-category"
         (focus)="placeHolderFocus('categLabel')"
         (blur)="placeHolderBlur('categLabel')"
+        required
       />
     </div>
     <div>
@@ -58,6 +62,7 @@
         id="product-discount"
         (focus)="placeHolderFocus('discountLabel')"
         (blur)="placeHolderBlur('discountLabel')"
+        required
       />
     </div>
     <div>
@@ -69,6 +74,7 @@
         id="product-seller"
         (focus)="placeHolderFocus('sellerLabel')"
         (blur)="placeHolderBlur('sellerLabel')"
+        required
       />
     </div>
   </div>
@@ -79,13 +85,13 @@
     <button type="reset">Clear</button>
   </div>
 </form>
-<form class="search-section">
+<form class="search-section" id ='search-form'>
   <div class="input-holder">
     <label id="searchLabel" for="search-product" class="input-placeholder">
       Search
     </label>
     <input
-      type="number"
+      type="search"
       id="search-product"
       (focus)="placeHolderFocus('searchLabel')"
       (blur)="placeHolderBlur('searchLabel')"
@@ -93,7 +99,7 @@
   </div>
   <div class="radio-holder">
     <div>
-      <input type="radio" name="search-type" id="by-name" />
+      <input type="radio" name="search-type" id="by-name" checked/>
       <label for="by-name">By Name</label>
     </div>
     <div>
@@ -110,7 +116,7 @@
 <table>
   <caption>
     <button (click)="emptyDb()"><mat-icon>delete_forever</mat-icon></button>
-    <h4>Total: <span>2</span></h4>
+    <h4>Total: <span id="products-count">2</span></h4>
   </caption>
   <thead>
     <tr>

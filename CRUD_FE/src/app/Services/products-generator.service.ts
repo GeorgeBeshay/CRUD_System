@@ -10,6 +10,10 @@ export class ProductsGeneratorService {
   constructor() {}
 
   generateProdcuts(products: Product[]) {
+    let tempProductsCount = document.getElementById(
+      'products-count'
+    ) as HTMLSpanElement;
+    tempProductsCount.innerHTML = `${products.length}`;
     let productsHolder = document.getElementById('productsHolder');
     if (!productsHolder) return;
     productsHolder.innerHTML = ``;
@@ -37,7 +41,11 @@ export class ProductsGeneratorService {
       let tempDiscount = document.createElement('td');
       tempDiscount.appendChild(
         document.createTextNode(
-          String((tempProduct.discountPercent * tempProduct.price) / 100.0)
+          String(
+            ((tempProduct.discountPercent * tempProduct.price) / 100.0).toFixed(
+              2
+            )
+          )
         )
       );
       let tempSup2 = document.createElement('sup');
