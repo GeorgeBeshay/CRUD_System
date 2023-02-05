@@ -25,13 +25,13 @@ export class MainPageComponent {
     // use this.serverCaller.'requestName'
   }
   currentYear: any = new Date().getFullYear();
-  ngOnInit() {
+  async ngOnInit() {
     this.utilities.filterNumberInput();
     let forms = document.forms;
     for (let i = 0; i < forms.length; i++) {
       forms[i].addEventListener('submit', (e) => e.preventDefault());
     }
-    this.runApplication();
+    await this.runApplication();
   }
 
   async runApplication() {
@@ -81,6 +81,11 @@ export class MainPageComponent {
         'Your Product has been updated successfully.',
         'success'
       );
+      window.scrollTo({
+        top: 99999999,
+        left: 0,
+        behavior: 'smooth',
+      });
     } else {
       Swal.fire({
         icon: 'error',

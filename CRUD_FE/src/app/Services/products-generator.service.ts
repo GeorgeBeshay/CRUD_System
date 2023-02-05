@@ -87,11 +87,11 @@ export class ProductsGeneratorService {
       tempRow.appendChild(tempSeller);
       // ---------------------- Separator ----------------------
       let tempBarCode = document.createElement('td');
-      let tempSVG = document.createElement('svg');
-      tempSVG.id = `${tempProduct._id}Svg`;
-      // this.generateBarCode(tempProduct._id);
+      let tempSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      tempSVG.id = `svg-${tempProduct._id}`;
       tempBarCode.appendChild(tempSVG);
       tempRow.appendChild(tempBarCode);
+
       // ---------------------- Separator ----------------------
       let tempAction = document.createElement('td');
 
@@ -113,22 +113,24 @@ export class ProductsGeneratorService {
       tempRow.appendChild(tempAction);
       // ---------------------- Separator ----------------------
       productsHolder.appendChild(tempRow);
+      this.generateBarCode(tempProduct._id);
     }
   }
 
-  // generateBarCode(id: string) {
-  //   JsBarcode(`#${id}Svg`, id, {
-  //     format: 'msi',
-  //     height: 35,
-  //     width: 1.5,
-  //     text: '- ' + id + ' -',
-  //     background: 'transparent',
-  //     lineColor: '#fff',
-  //     font: 'monospace',
-  //     fontOptions: 'bold',
-  //     fontSize: 16,
-  //     margin: 2,
-  //     textMargin: 2,
-  //   });
-  // }
+  generateBarCode(id: string) {
+    console.log(document.getElementById(`svg-${id}`))
+    JsBarcode(`#svg-${id}`, id, {
+      format: 'msi',
+      height: 35,
+      width: 1.5,
+      text: '- ' + id + ' -',
+      background: 'transparent',
+      lineColor: '#fff',
+      font: 'monospace',
+      fontOptions: 'bold',
+      fontSize: 16,
+      margin: 2,
+      textMargin: 2,
+    });
+  }
 }
