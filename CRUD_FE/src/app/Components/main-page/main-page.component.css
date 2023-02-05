@@ -111,10 +111,22 @@ form button:hover {
 .search-section > * {
   width: 35%;
 }
+@media (max-width: 1100px) {
+  .search-section > * {
+    width: 100%;
+  }
+}
 .search-section .radio-holder {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+@media (max-width: 420px) {
+  .search-section .radio-holder {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 .search-section .radio-holder div input[type="radio"] {
   display: none;
@@ -190,17 +202,27 @@ table caption {
   text-align: left;
   margin-bottom: 15px;
 }
+table caption div {
+  display: inline-block;
+  width: fit-content;
+}
 table caption button {
   background-color: transparent;
   border: none;
   color: var(--red);
-  font-size: 52px;
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 50px;
   height: 50px;
+}
+table caption div button {
+  color: var(--red);
+}
+table caption > button {
+  color: var(--green);
+  float: right;
 }
 table caption button * {
   -webkit-transform: scale(1.5);
@@ -209,8 +231,9 @@ table caption button * {
   -o-transform: scale(1.5);
   transform: scale(1.5);
 }
-table caption h4 {
+table caption div h4 {
   display: inline-block;
+  width: fit-content;
   margin-inline-start: 10px;
   position: relative;
 }
@@ -235,12 +258,27 @@ table tbody tr td button {
   margin-inline: 2.5px;
   padding: 5px 10px;
   background-color: transparent;
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -ms-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+table tbody tr td button:hover {
+  filter: brightness(80%);
+  -webkit-filter: brightness(80%);
 }
 table tbody tr td button.delete-btn {
   background-color: var(--red);
   color: #fff;
+}
+table tbody tr td button.delete-btn:hover {
+  border-color: #fff;
+}
+table tbody tr td button.edit-btn:hover {
+  border-color: #000;
 }
 table tbody tr td button.edit-btn {
   background-color: var(--green);
