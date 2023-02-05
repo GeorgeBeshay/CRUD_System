@@ -79,8 +79,21 @@
     </div>
   </div>
   <div class="buttons-container">
-    <button type="submit" class="submit" (click)="this.utilities.addProduct()">
+    <button
+      id="add-btn"
+      type="submit"
+      class="submit"
+      (click)="this.createProduct()"
+    >
       Add Product
+    </button>
+    <button
+      id="update-btn"
+      type="submit"
+      class="update"
+      (click)="this.updateProduct()"
+    >
+      Update Product
     </button>
     <button type="reset">Clear</button>
   </div>
@@ -117,7 +130,7 @@
   <table>
     <caption>
       <div>
-        <button (click)="this.utilities.emptyDb()">
+        <button (click)="this.emptyDB()">
           <mat-icon>delete_forever</mat-icon>
         </button>
         <h4>Total: <span id="products-count">2</span></h4>
@@ -139,36 +152,7 @@
         <th>Action</th>
       </tr>
     </thead>
-    <tbody id="productsHolder">
-      <!-- <tr>
-        <td>1</td>
-        <td>Grooking Algorithms</td>
-        <td><span>154.2</span><sup>$</sup></td>
-        <td><span>54.2</span><sup>$</sup></td>
-        <td>7</td>
-        <td>Books</td>
-        <td>Amazon</td>
-        <td><svg id="barcode"></svg></td>
-        <td>
-          <button class="edit-btn" (click)="editProduct()">Edit</button>
-          <button class="delete-btn" (click)="deleteProduct()">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>MacBook Pro</td>
-        <td><span>252.99</span><sup>$</sup></td>
-        <td><span>22.99</span><sup>$</sup></td>
-        <td>5</td>
-        <td>Electronics</td>
-        <td>Amazon</td>
-        <td><svg id="barcode"></svg></td>
-        <td>
-          <button class="edit-btn" (click)="editProduct()">Edit</button>
-          <button class="delete-btn" (click)="deleteProduct()">Delete</button>
-        </td>
-      </tr> -->
-    </tbody>
+    <tbody id="productsHolder"></tbody>
   </table>
 </div>
 <footer>

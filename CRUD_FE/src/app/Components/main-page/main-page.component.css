@@ -86,16 +86,25 @@ form button:hover {
   color: var(--green);
   border: 2px solid var(--green);
 }
+.product-details .buttons-container button.update {
+  color: #eedc11;
+  border: 2px solid #eedc11;
+  display: none;
+}
+.product-details .buttons-container button.update:hover {
+  background-color: #eedc11;
+  color: black;
+}
 .product-details .buttons-container button.submit:hover,
 .search-section button.search-btn:hover {
   color: #000;
   background-color: var(--green);
 }
-.product-details .buttons-container button:not(.submit) {
+.product-details .buttons-container button:not(.submit, .update) {
   color: #fff;
   border: 2px solid var(--red);
 }
-.product-details .buttons-container button:not(.submit):hover {
+.product-details .buttons-container button:not(.submit, .update):hover {
   color: #fff;
   background-color: var(--red);
 }
@@ -260,6 +269,10 @@ table tbody tr td {
 }
 table tbody tr:hover td {
   background-color: rgba(0, 0, 0, 0.15);
+}
+table tbody tr td del {
+  font-size: 13px;
+  margin-right: 5px;
 }
 table tbody tr td sup {
   color: var(--green);

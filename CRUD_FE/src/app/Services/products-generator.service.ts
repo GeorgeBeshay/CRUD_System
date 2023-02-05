@@ -3,12 +3,13 @@ import { Product } from '../Interfaces/product';
 import * as JsBarcode from 'jsbarcode';
 import Swal from 'sweetalert2';
 import { ServerCallerService } from './server-caller.service';
+import { MainPageComponent } from '../Components/main-page/main-page.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsGeneratorService {
-  constructor(private serverCaller: ServerCallerService) {}
+  constructor(private mainPage: MainPageComponent) {}
 
   generateProdcuts(products: Product[]) {
     let tempProductsCount = document.getElementById(
@@ -32,8 +33,27 @@ export class ProductsGeneratorService {
       tempTitle.appendChild(document.createTextNode(tempProduct.name));
       tempRow.appendChild(tempTitle);
       // ---------------------- Separator ----------------------
+      let oldPrice = document.createElement('del');
+      oldPrice.appendChild(
+        document.createTextNode(String(tempProduct.price.toLocaleString()))
+      );
       let tempPrice = document.createElement('td');
-      tempPrice.appendChild(document.createTextNode(String(tempProduct.price)));
+      tempPrice.appendChild(oldPrice);
+      let newPrice = document.createElement('strong');
+      newPrice.appendChild(
+        document.createTextNode(
+          String(
+            Number(tempProduct.price) -
+              Number(
+                (
+                  (tempProduct.discountPercent * tempProduct.price) /
+                  100
+                ).toFixed(2)
+              )
+          )
+        )
+      );
+      tempPrice.appendChild(newPrice);
       let tempSup = document.createElement('sup');
       tempSup.appendChild(document.createTextNode('$'));
       tempPrice.appendChild(tempSup);
@@ -42,11 +62,9 @@ export class ProductsGeneratorService {
       let tempDiscount = document.createElement('td');
       tempDiscount.appendChild(
         document.createTextNode(
-          String(
-            ((tempProduct.discountPercent * tempProduct.price) / 100.0).toFixed(
-              2
-            )
-          )
+          Number(
+            ((tempProduct.discountPercent * tempProduct.price) / 100).toFixed(2)
+          ).toLocaleString()
         )
       );
       let tempSup2 = document.createElement('sup');
@@ -56,7 +74,7 @@ export class ProductsGeneratorService {
       // ---------------------- Separator ----------------------
       let tempAmount = document.createElement('td');
       tempAmount.appendChild(
-        document.createTextNode(String(tempProduct.amount))
+        document.createTextNode(String(tempProduct.amount.toLocaleString()))
       );
       tempRow.appendChild(tempAmount);
       // ---------------------- Separator ----------------------
@@ -80,7 +98,7 @@ export class ProductsGeneratorService {
       let tempEditButton = document.createElement('button');
       tempEditButton.classList.add('edit-btn');
       tempEditButton.addEventListener('click', () =>
-        this.editProduct(tempProduct)
+        this.mainPage.editProduct(tempProduct)
       );
       tempEditButton.appendChild(document.createTextNode('Edit'));
       tempAction.appendChild(tempEditButton);
@@ -88,11 +106,10 @@ export class ProductsGeneratorService {
       let tempDeleteButton = document.createElement('button');
       tempDeleteButton.classList.add('delete-btn');
       tempDeleteButton.addEventListener('click', () =>
-        this.deleteProduct(tempProduct)
+        this.mainPage.deleteProduct(tempProduct)
       );
       tempDeleteButton.appendChild(document.createTextNode('Delete'));
       tempAction.appendChild(tempDeleteButton);
-
       tempRow.appendChild(tempAction);
       // ---------------------- Separator ----------------------
       productsHolder.appendChild(tempRow);
@@ -114,30 +131,4 @@ export class ProductsGeneratorService {
   //     textMargin: 2,
   //   });
   // }
-
-  editProduct(product: Product) {
-    console.log('edit product clicked');
-  }
-
-  async deleteProduct(product: Product) {
-    Swal.fire({
-      title: 'Are you sure you want to delete this product?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonColor: '#d33',
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your Product has been deleted successfully.',
-          'success'
-        );
-        await this.serverCaller.delete(product);
-        this.generateProdcuts(await this.serverCaller.load());
-      }
-    });
-  }
 }

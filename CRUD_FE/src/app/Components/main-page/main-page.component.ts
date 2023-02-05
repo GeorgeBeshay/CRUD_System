@@ -17,10 +17,11 @@ export class MainPageComponent {
   private serverCaller: ServerCallerService;
   private productsGenerator: ProductsGeneratorService;
   protected utilities: UtilitiesService;
+  private currentProductId = '000000';
   constructor(private http: HttpClient) {
     this.serverCaller = new ServerCallerService(this.http);
-    this.productsGenerator = new ProductsGeneratorService(this.serverCaller);
-    this.utilities = new UtilitiesService(this.serverCaller);
+    this.productsGenerator = new ProductsGeneratorService(this);
+    this.utilities = new UtilitiesService(this.serverCaller, this);
     // use this.serverCaller.'requestName'
   }
   currentYear: any = new Date().getFullYear();
@@ -37,6 +38,11 @@ export class MainPageComponent {
     this.productsGenerator.generateProdcuts(await this.serverCaller.load());
   }
 
+  async createProduct() {
+    await this.utilities.addProduct();
+    await this.runApplication();
+  }
+
   placeHolderFocus(id: any) {
     document.getElementById(id)?.classList.add('active');
     document.getElementById(id)?.nextElementSibling?.classList.add('active');
@@ -49,6 +55,52 @@ export class MainPageComponent {
       document.getElementById(id)?.classList.remove('active');
       input.classList.remove('active');
     }
+  }
+
+  async deleteProduct(product: Product) {
+    if (await this.utilities.confirmDeletion()) {
+      await this.serverCaller.delete(product);
+      await this.runApplication();
+    }
+  }
+
+  async updateProduct() {
+    let tempProduct = this.utilities.readProduct(this.currentProductId);
+    if (this.utilities.validateProduct(tempProduct)) {
+      let addBtn = document.getElementById('add-btn') as HTMLButtonElement;
+      addBtn.style.display = 'inline-block';
+      let updateBtn = document.getElementById(
+        'update-btn'
+      ) as HTMLButtonElement;
+      updateBtn.style.display = 'none';
+      await this.serverCaller.update(tempProduct);
+      await this.runApplication();
+      document.forms[0].reset();
+      Swal.fire(
+        'Updated!',
+        'Your Product has been updated successfully.',
+        'success'
+      );
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Whoops...',
+        text: 'Something went wrong!',
+        timer: 5000,
+      });
+    }
+  }
+
+  async emptyDB() {
+    if (await this.utilities.emptyDb()) {
+      await this.serverCaller.emptyDB();
+      await this.runApplication();
+    }
+  }
+
+  async editProduct(product: Product) {
+    this.currentProductId = product._id;
+    this.utilities.supportEditProduct(product);
   }
 
   async searchProduct() {

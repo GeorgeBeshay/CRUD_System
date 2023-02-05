@@ -74,15 +74,8 @@ public class ServerCore {
 	// ------------------------ Separator ------------------------
 	public void emptyTheDB() {
 		this.updateStatusFlag = true;
-		System.out.println("Administrative Request: Database Deletion\n Continue ??\n Y: yes - N: no");
-		Scanner scanner = new Scanner(System.in);
-		if(scanner.next().compareToIgnoreCase("y") == 0) {			
-			productRepository.deleteAll();
-			System.out.println("MongoDB Documents have been deleted.");
-		} else {
-			System.out.println("Deletion Request has been cancelled.");
-		}
-		scanner.close();
+		productRepository.deleteAll();
+		System.out.println("Database has been completely deleted");
 	}
 	// ----------------------- Secondary Methods -----------------------
 	/**
