@@ -69,21 +69,15 @@ export class ProductsGeneratorService {
       let tempAction = document.createElement('td');
 
       let tempEditButton = document.createElement('button');
-      tempEditButton.addEventListener('click', (func) => this.editProduct());
-      let tempMatIcon = document.createElement('mat-icon');
-      tempMatIcon.classList.add('edit-btn');
-      tempMatIcon.appendChild(document.createTextNode('edit_square'));
-      tempEditButton.appendChild(tempMatIcon);
+      tempEditButton.classList.add('edit-btn');
+      tempEditButton.addEventListener('click', () => this.editProduct());
+      tempEditButton.appendChild(document.createTextNode('Edit'));
       tempAction.appendChild(tempEditButton);
 
       let tempDeleteButton = document.createElement('button');
-      tempDeleteButton.addEventListener('click', (func) =>
-        this.deleteProduct()
-      );
-      let tempMatIcon2 = document.createElement('mat-icon');
-      tempMatIcon2.classList.add('delete-btn');
-      tempMatIcon2.appendChild(document.createTextNode('delete'));
-      tempDeleteButton.appendChild(tempMatIcon2);
+      tempDeleteButton.classList.add('delete-btn');
+      tempDeleteButton.addEventListener('click', () => this.deleteProduct());
+      tempDeleteButton.appendChild(document.createTextNode('Delete'));
       tempAction.appendChild(tempDeleteButton);
 
       tempRow.appendChild(tempAction);
@@ -109,7 +103,7 @@ export class ProductsGeneratorService {
   // }
 
   editProduct() {
-    console.log('clicked');
+    console.log('edit product clicked');
   }
 
   deleteProduct() {

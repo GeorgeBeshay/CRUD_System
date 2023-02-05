@@ -3,13 +3,13 @@
   font-family: "Aboreto", cursive;
   text-align: center;
 }
-form {
+.product-details {
   width: 95%;
   margin: auto;
   padding: 25px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
-form .inputs-container {
+.product-details .inputs-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,20 +17,21 @@ form .inputs-container {
   gap: 60px 30px;
   margin-bottom: 50px;
 }
-form .inputs-container > div {
+.product-details .inputs-container > div {
   flex-basis: calc(50% - 15px);
   position: relative;
 }
 @media (max-width: 767px) {
-  form .inputs-container {
+  .product-details .inputs-container {
     flex-direction: column;
     gap: 30px;
   }
-  form .inputs-container > div {
+  .product-details .inputs-container > div {
     width: 100%;
   }
 }
-form .inputs-container > div label {
+.product-details .inputs-container > div label,
+.search-section .input-holder label {
   position: relative;
   top: 29px;
   left: 10px;
@@ -43,29 +44,30 @@ form .inputs-container > div label {
   -o-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
 }
-form .inputs-container > div label.active {
+.product-details .inputs-container > div label.active,
+.search-section .input-holder label.active {
   position: relative;
   top: 0;
   left: 0;
   color: var(--secondary-color);
 }
-form .inputs-container > div input {
+.product-details .inputs-container > div input {
   width: 100%;
   padding: 10px;
   font-weight: 700;
   border: 3px solid;
   border-color: transparent transparent var(--secondary-color) transparent;
 }
-form .inputs-container > div input.active {
+.product-details .inputs-container > div input.active {
   border-color: var(--secondary-color);
 }
-form .buttons-container {
+.product-details .buttons-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 25px;
 }
-form .buttons-container button {
+form button {
   padding: 10px;
   cursor: pointer;
   background-color: transparent;
@@ -75,25 +77,108 @@ form .buttons-container button {
   -o-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
 }
-form .buttons-container button:hover {
+form button:hover {
   letter-spacing: 2px;
   padding: 10px 20px;
 }
-form .buttons-container button.submit {
+.product-details .buttons-container button.submit,
+.search-section button.search-btn {
   color: var(--green);
   border: 2px solid var(--green);
 }
-form .buttons-container button.submit:hover {
+.product-details .buttons-container button.submit:hover,
+.search-section button.search-btn:hover {
   color: #000;
   background-color: var(--green);
 }
-form .buttons-container button:not(.submit) {
+.product-details .buttons-container button:not(.submit) {
   color: #fff;
   border: 2px solid var(--red);
 }
-form .buttons-container button:not(.submit):hover {
+.product-details .buttons-container button:not(.submit):hover {
   color: #fff;
   background-color: var(--red);
+}
+.search-section {
+  width: 95%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+}
+.search-section > * {
+  width: 35%;
+}
+.search-section .radio-holder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-section .radio-holder div input[type="radio"] {
+  display: none;
+}
+.search-section .radio-holder div label {
+  padding-left: 30px;
+  cursor: pointer;
+  position: relative;
+}
+.search-section .radio-holder div label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -10px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--red);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+.search-section .radio-holder div label::after {
+  content: "";
+  position: absolute;
+  left: 4.6625px;
+  top: 7.2px;
+  width: 12px;
+  height: 12px;
+  background: var(--secondary-color);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -ms-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.search-section .radio-holder div input[type="radio"]:checked + label::before {
+  border-color: var(--secondary-color);
+}
+.search-section .radio-holder div input[type="radio"]:checked + label::after {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+.search-section .input-holder input {
+  width: 100%;
+  padding: 10px;
+  font-weight: 700;
+  border: 3px solid;
+  border-color: transparent transparent var(--secondary-color) transparent;
 }
 table {
   width: 95%;
@@ -147,19 +232,19 @@ table tbody tr td sup {
   color: var(--green);
 }
 table tbody tr td button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
   margin-inline: 2.5px;
+  padding: 5px 10px;
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
-table tbody tr td button .delete-btn {
-  color: var(--red);
+table tbody tr td button.delete-btn {
+  background-color: var(--red);
+  color: #fff;
 }
-table tbody tr td button .edit-btn {
-  color: var(--green);
+table tbody tr td button.edit-btn {
+  background-color: var(--green);
+  color: #000;
 }
 footer {
   display: flex;

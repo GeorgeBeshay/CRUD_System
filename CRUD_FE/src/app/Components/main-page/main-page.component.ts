@@ -55,6 +55,15 @@ export class MainPageComponent {
     }
   }
 
+  addProduct() {
+    document.forms[0].reset();
+    Swal.fire('Added!', 'Your Product has been added successfully.', 'success');
+  }
+
+  searchProduct() {
+    console.log('search product clicked');
+  }
+
   emptyDb() {
     Swal.fire({
       title: 'Are you sure you want to delete all products?',
@@ -75,13 +84,8 @@ export class MainPageComponent {
     });
   }
 
-  addProduct() {
-    document.forms[0].reset();
-    Swal.fire('Added!', 'Your Product has been added successfully.', 'success');
-  }
-
   editProduct() {
-    console.log('clicked');
+    console.log('edit product clicked');
   }
 
   deleteProduct() {

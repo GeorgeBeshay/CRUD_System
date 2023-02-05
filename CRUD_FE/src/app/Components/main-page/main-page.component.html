@@ -1,5 +1,5 @@
 <h1 class="page-title">CRUD System</h1>
-<form>
+<form class="product-details">
   <div class="inputs-container">
     <div>
       <label id="nameLabel" for="product-name" class="input-placeholder">
@@ -79,6 +79,34 @@
     <button type="reset">Clear</button>
   </div>
 </form>
+<form class="search-section">
+  <div class="input-holder">
+    <label id="searchLabel" for="search-product" class="input-placeholder">
+      Search
+    </label>
+    <input
+      type="number"
+      id="search-product"
+      (focus)="placeHolderFocus('searchLabel')"
+      (blur)="placeHolderBlur('searchLabel')"
+    />
+  </div>
+  <div class="radio-holder">
+    <div>
+      <input type="radio" name="search-type" id="by-name" />
+      <label for="by-name">By Name</label>
+    </div>
+    <div>
+      <input type="radio" name="search-type" id="by-category" />
+      <label for="by-category">By Category</label>
+    </div>
+    <div>
+      <input type="radio" name="search-type" id="by-seller" />
+      <label for="by-seller">By Seller</label>
+    </div>
+  </div>
+  <button class="search-btn" (click)="searchProduct()">Search</button>
+</form>
 <table>
   <caption>
     <button (click)="emptyDb()"><mat-icon>delete_forever</mat-icon></button>
@@ -98,7 +126,7 @@
     </tr>
   </thead>
   <tbody id="productsHolder">
-    <!-- <tr>
+    <tr>
       <td>1</td>
       <td>Grooking Algorithms</td>
       <td><span>154.2</span><sup>$</sup></td>
@@ -108,12 +136,8 @@
       <td>Amazon</td>
       <td><svg id="barcode"></svg></td>
       <td>
-        <button (click)="editProduct()">
-          <mat-icon class="edit-btn">edit_square</mat-icon>
-        </button>
-        <button (click)="deleteProduct()">
-          <mat-icon class="delete-btn">delete</mat-icon>
-        </button>
+        <button class="edit-btn" (click)="editProduct()">Edit</button>
+        <button class="delete-btn" (click)="deleteProduct()">Delete</button>
       </td>
     </tr>
     <tr>
@@ -126,14 +150,10 @@
       <td>Amazon</td>
       <td><svg id="barcode"></svg></td>
       <td>
-        <button (click)="editProduct()">
-          <mat-icon class="edit-btn">edit_square</mat-icon>
-        </button>
-        <button (click)="deleteProduct()">
-          <mat-icon class="delete-btn">delete</mat-icon>
-        </button>
+        <button class="edit-btn" (click)="editProduct()">Edit</button>
+        <button class="delete-btn" (click)="deleteProduct()">Delete</button>
       </td>
-    </tr> -->
+    </tr>
   </tbody>
 </table>
 <footer>
