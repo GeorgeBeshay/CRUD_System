@@ -92,7 +92,7 @@ export class UtilitiesService {
       product._id.length == 0 ||
       product.amount == 0 ||
       product.category.length == 0 ||
-      product.discountPercent == 0 ||
+      product.discountPercent < 0 ||
       product.name.length == 0 ||
       product.price == 0 ||
       product.seller.length == 0
@@ -118,6 +118,20 @@ export class UtilitiesService {
     let discountField = document.getElementById(
       'product-discount'
     ) as HTMLInputElement;
+    let nameLabel = document.getElementById('nameLabel') as HTMLLabelElement;
+    let amountLabel = document.getElementById(
+      'amountLabel'
+    ) as HTMLLabelElement;
+    let priceLabel = document.getElementById('priceLabel') as HTMLLabelElement;
+    let categoryLabel = document.getElementById(
+      'categLabel'
+    ) as HTMLLabelElement;
+    let sellerLabel = document.getElementById(
+      'sellerLabel'
+    ) as HTMLLabelElement;
+    let discountLabel = document.getElementById(
+      'discountLabel'
+    ) as HTMLLabelElement;
     // -------------------- Separator --------------------
     nameField.value = product.name;
     amountField.value = String(product.amount);
@@ -126,11 +140,23 @@ export class UtilitiesService {
     sellerField.value = product.seller;
     discountField.value = String(product.discountPercent);
     // -------------------- Separator --------------------
+    nameLabel.classList.add('update');
+    nameField.classList.add('update');
     nameField.focus();
+    amountLabel.classList.add('update');
+    amountField.classList.add('update');
     amountField.focus();
+    priceLabel.classList.add('update');
+    priceField.classList.add('update');
     priceField.focus();
+    categoryLabel.classList.add('update');
+    categoryField.classList.add('update');
     categoryField.focus();
+    sellerLabel.classList.add('update');
+    sellerField.classList.add('update');
     sellerField.focus();
+    discountLabel.classList.add('update');
+    discountField.classList.add('update');
     discountField.focus();
     // -------------------- Separator --------------------
     let addBtn = document.getElementById('add-btn') as HTMLButtonElement;

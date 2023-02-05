@@ -51,6 +51,10 @@
   left: 0;
   color: var(--secondary-color);
 }
+.product-details .inputs-container > div label.active.update,
+.search-section .input-holder label.active.update {
+  color: var(--yellow);
+}
 .product-details .inputs-container > div input {
   width: 100%;
   padding: 10px;
@@ -58,8 +62,17 @@
   border: 3px solid;
   border-color: transparent transparent var(--secondary-color) transparent;
 }
+.product-details .inputs-container > div input.update {
+  border-color: transparent transparent var(--yellow) transparent;
+}
 .product-details .inputs-container > div input.active {
   border-color: var(--secondary-color);
+}
+.product-details .inputs-container > div input.active.update {
+  border-color: var(--yellow);
+}
+.product-details .inputs-container > div input.active.update {
+  border-color: var(--yellow);
 }
 .product-details .buttons-container {
   display: flex;
@@ -87,12 +100,12 @@ form button:hover {
   border: 2px solid var(--green);
 }
 .product-details .buttons-container button.update {
-  color: #eedc11;
-  border: 2px solid #eedc11;
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
   display: none;
 }
 .product-details .buttons-container button.update:hover {
-  background-color: #eedc11;
+  background-color: var(--yellow);
   color: black;
 }
 .product-details .buttons-container button.submit:hover,
