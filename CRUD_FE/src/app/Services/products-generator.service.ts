@@ -61,14 +61,10 @@ export class ProductsGeneratorService {
       // ---------------------- Separator ----------------------
       let tempDiscount = document.createElement('td');
       tempDiscount.appendChild(
-        document.createTextNode(
-          Number(
-            ((tempProduct.discountPercent * tempProduct.price) / 100).toFixed(2)
-          ).toLocaleString()
-        )
+        document.createTextNode(String(tempProduct.discountPercent))
       );
       let tempSup2 = document.createElement('sup');
-      tempSup2.appendChild(document.createTextNode('$'));
+      tempSup2.appendChild(document.createTextNode('%'));
       tempDiscount.appendChild(tempSup2);
       tempRow.appendChild(tempDiscount);
       // ---------------------- Separator ----------------------
@@ -87,7 +83,10 @@ export class ProductsGeneratorService {
       tempRow.appendChild(tempSeller);
       // ---------------------- Separator ----------------------
       let tempBarCode = document.createElement('td');
-      let tempSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      let tempSVG = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'svg'
+      );
       tempSVG.id = `svg-${tempProduct._id}`;
       tempBarCode.appendChild(tempSVG);
       tempRow.appendChild(tempBarCode);
@@ -118,7 +117,7 @@ export class ProductsGeneratorService {
   }
 
   generateBarCode(id: string) {
-    console.log(document.getElementById(`svg-${id}`))
+    console.log(document.getElementById(`svg-${id}`));
     JsBarcode(`#svg-${id}`, id, {
       format: 'msi',
       height: 35,

@@ -3,6 +3,15 @@
   font-family: "Aboreto", cursive;
   text-align: center;
 }
+.page-title * {
+  position: relative;
+  bottom: 3px;
+  -webkit-transform: scale(1.7);
+  -moz-transform: scale(1.7);
+  -ms-transform: scale(1.7);
+  -o-transform: scale(1.7);
+  transform: scale(1.7);
+}
 .product-details {
   width: 95%;
   margin: auto;
@@ -81,6 +90,9 @@
   gap: 25px;
 }
 form button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   cursor: pointer;
   background-color: transparent;
@@ -94,10 +106,31 @@ form button:hover {
   letter-spacing: 2px;
   padding: 10px 20px;
 }
+.product-details .buttons-container button * {
+  position: relative;
+  left: 6px;
+  bottom: 1px;
+  margin-right: 5px;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+  transform: scale(0.9);
+}
 .product-details .buttons-container button.submit,
 .search-section button.search-btn {
   color: var(--green);
   border: 2px solid var(--green);
+}
+.search-section button.search-btn * {
+  position: relative;
+  left: 3px;
+  bottom: 1px;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+  transform: scale(0.9);
 }
 .product-details .buttons-container button.update {
   color: var(--yellow);
@@ -214,9 +247,13 @@ form button:hover {
   border: 3px solid;
   border-color: transparent transparent var(--secondary-color) transparent;
 }
+.table-holder {
+  overflow-x: auto;
+  margin-bottom: 50px;
+}
 table {
   width: 95%;
-  margin: 50px auto;
+  margin: 50px auto 0;
   border-collapse: collapse;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
@@ -284,13 +321,15 @@ table tbody tr:hover td {
   background-color: rgba(0, 0, 0, 0.15);
 }
 table tbody tr td del {
-  font-size: 13px;
+  display: block;
+  text-decoration: line-through solid #eecd11dd;
   margin-right: 5px;
 }
 table tbody tr td sup {
   color: var(--green);
 }
 table tbody tr td button {
+  width: 70px;
   margin-inline: 2.5px;
   padding: 5px 10px;
   background-color: transparent;

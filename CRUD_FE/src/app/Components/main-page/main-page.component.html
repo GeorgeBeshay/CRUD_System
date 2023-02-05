@@ -1,4 +1,8 @@
-<h1 class="page-title">CRUD System</h1>
+<h1 class="page-title">
+  <mat-icon style="right: 6px">warehouse</mat-icon>
+  CRUD System
+  <mat-icon style="left: 6px">warehouse</mat-icon>
+</h1>
 <form class="product-details" id="product-form">
   <div class="inputs-container">
     <div>
@@ -86,6 +90,7 @@
       (click)="this.createProduct()"
     >
       Add Product
+      <mat-icon>add_card</mat-icon>
     </button>
     <button
       id="update-btn"
@@ -94,8 +99,12 @@
       (click)="this.updateProduct()"
     >
       Update Product
+      <mat-icon>update</mat-icon>
     </button>
-    <button type="reset">Clear</button>
+    <button type="reset">
+      Clear
+      <mat-icon>clear_all</mat-icon>
+    </button>
   </div>
 </form>
 <form class="search-section" id="search-form">
@@ -124,9 +133,11 @@
       <label for="by-seller">By Seller</label>
     </div>
   </div>
-  <button class="search-btn" (click)="searchProduct()">Search</button>
+  <button class="search-btn" (click)="searchProduct()">
+    Search <mat-icon>search</mat-icon>
+  </button>
 </form>
-<div>
+<div class="table-holder">
   <table>
     <caption>
       <div>
