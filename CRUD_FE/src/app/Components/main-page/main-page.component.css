@@ -141,6 +141,9 @@ form button:hover {
   background-color: var(--yellow);
   color: black;
 }
+.product-details .buttons-container button#cancel-btn {
+  display: none;
+}
 .product-details .buttons-container button.submit:hover,
 .search-section button.search-btn:hover {
   color: #000;

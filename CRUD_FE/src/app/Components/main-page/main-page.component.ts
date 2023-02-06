@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as JsBarcode from 'jsbarcode';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { ServerCallerService } from 'src/app/Services/server-caller.service';
@@ -43,20 +42,6 @@ export class MainPageComponent {
     await this.runApplication();
   }
 
-  // placeHolderFocus(id: any) {
-  //   document.getElementById(id)?.classList.add('active');
-  //   document.getElementById(id)?.nextElementSibling?.classList.add('active');
-  // }
-
-  // placeHolderBlur(id: any) {
-  //   let input = document.getElementById(id)
-  //     ?.nextElementSibling as HTMLInputElement;
-  //   if (input.value === '') {
-  //     document.getElementById(id)?.classList.remove('active');
-  //     input.classList.remove('active');
-  //   }
-  // }
-
   async deleteProduct(product: Product) {
     if (await this.utilities.confirmDeletion()) {
       await this.serverCaller.delete(product);
@@ -67,35 +52,17 @@ export class MainPageComponent {
   async updateProduct() {
     let tempProduct = this.utilities.readProduct(this.currentProductId);
     let nameField = document.getElementById('product-name') as HTMLInputElement;
-    let amountField = document.getElementById(
-      'product-amount'
-    ) as HTMLInputElement;
-    let priceField = document.getElementById(
-      'product-price'
-    ) as HTMLInputElement;
-    let categoryField = document.getElementById(
-      'product-category'
-    ) as HTMLInputElement;
-    let sellerField = document.getElementById(
-      'product-seller'
-    ) as HTMLInputElement;
-    let discountField = document.getElementById(
-      'product-discount'
-    ) as HTMLInputElement;
+    let amountField = document.getElementById('product-amount') as HTMLInputElement;
+    let priceField = document.getElementById('product-price') as HTMLInputElement;
+    let categoryField = document.getElementById('product-category') as HTMLInputElement;
+    let sellerField = document.getElementById('product-seller') as HTMLInputElement;
+    let discountField = document.getElementById('product-discount') as HTMLInputElement;
     let nameLabel = document.getElementById('nameLabel') as HTMLLabelElement;
-    let amountLabel = document.getElementById(
-      'amountLabel'
-    ) as HTMLLabelElement;
+    let amountLabel = document.getElementById('amountLabel') as HTMLLabelElement;
     let priceLabel = document.getElementById('priceLabel') as HTMLLabelElement;
-    let categoryLabel = document.getElementById(
-      'categLabel'
-    ) as HTMLLabelElement;
-    let sellerLabel = document.getElementById(
-      'sellerLabel'
-    ) as HTMLLabelElement;
-    let discountLabel = document.getElementById(
-      'discountLabel'
-    ) as HTMLLabelElement;
+    let categoryLabel = document.getElementById('categLabel') as HTMLLabelElement;
+    let sellerLabel = document.getElementById('sellerLabel') as HTMLLabelElement;
+    let discountLabel = document.getElementById('discountLabel') as HTMLLabelElement;
 
     nameLabel.classList.remove('update');
     nameField.classList.remove('update');
@@ -119,9 +86,7 @@ export class MainPageComponent {
     if (this.utilities.validateProduct(tempProduct)) {
       let addBtn = document.getElementById('add-btn') as HTMLButtonElement;
       addBtn.style.display = 'inline-block';
-      let updateBtn = document.getElementById(
-        'update-btn'
-      ) as HTMLButtonElement;
+      let updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
       updateBtn.style.display = 'none';
 
       await this.serverCaller.update(tempProduct);

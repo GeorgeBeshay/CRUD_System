@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 import { MainPageComponent } from '../Components/main-page/main-page.component';
 import { Product } from '../Interfaces/product';
@@ -163,6 +162,8 @@ export class UtilitiesService {
     addBtn.style.display = 'none';
     let updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
     updateBtn.style.display = 'inline-block';
+    let cancelBtn = document.getElementById('cancel-btn') as HTMLButtonElement;
+    cancelBtn.style.display = 'inline-block';
     // -------------------- Separator --------------------
     window.scrollTo({
       top: 0,
