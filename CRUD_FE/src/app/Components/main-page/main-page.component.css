@@ -11,6 +11,7 @@
   -ms-transform: scale(1.7);
   -o-transform: scale(1.7);
   transform: scale(1.7);
+  color: var(--green);
 }
 .product-details {
   width: 95%;
@@ -58,7 +59,7 @@
   position: relative;
   top: 0;
   left: 0;
-  color: var(--secondary-color);
+  color: var(--green);
 }
 .product-details .inputs-container > div label.active.update,
 .search-section .input-holder label.active.update {
@@ -69,13 +70,13 @@
   padding: 10px;
   font-weight: 700;
   border: 3px solid;
-  border-color: transparent transparent var(--secondary-color) transparent;
+  border-color: transparent transparent var(--green) transparent;
 }
 .product-details .inputs-container > div input.update {
   border-color: transparent transparent var(--yellow) transparent;
 }
 .product-details .inputs-container > div input.active {
-  border-color: var(--secondary-color);
+  border-color: var(--green);
 }
 .product-details .inputs-container > div input.active.update {
   border-color: var(--yellow);
@@ -212,11 +213,11 @@ form button:hover {
 .search-section .radio-holder div label::after {
   content: "";
   position: absolute;
-  left: 4.6625px;
-  top: 7.2px;
+  left: 4.2px;
+  top: 5.2px;
   width: 12px;
   height: 12px;
-  background: var(--secondary-color);
+  background: var(--green);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -234,7 +235,7 @@ form button:hover {
   transition: 0.3s ease-in-out;
 }
 .search-section .radio-holder div input[type="radio"]:checked + label::before {
-  border-color: var(--secondary-color);
+  border-color: var(--green);
 }
 .search-section .radio-holder div input[type="radio"]:checked + label::after {
   -webkit-transform: scale(1);
@@ -248,7 +249,7 @@ form button:hover {
   padding: 10px;
   font-weight: 700;
   border: 3px solid;
-  border-color: transparent transparent var(--secondary-color) transparent;
+  border-color: transparent transparent var(--green) transparent;
 }
 .table-holder {
   overflow-x: auto;
@@ -296,6 +297,9 @@ table caption > button {
   color: var(--green);
   float: right;
 }
+table caption > button:hover {
+  color: var(--yellow);
+}
 table caption button * {
   -webkit-transform: scale(1.5);
   -moz-transform: scale(1.5);
@@ -312,7 +316,7 @@ table caption div h4 {
 table thead tr th,
 table tbody tr td {
   padding: 10px;
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 1px solid var(--yellow);
   text-align: center;
   -webkit-transition: 0.25s ease-in-out;
   -moz-transition: 0.25s ease-in-out;
@@ -344,10 +348,10 @@ table tbody tr td button {
   -o-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
 }
-table caption button:hover,
-table tbody tr td button:hover {
-  -webkit-filter: brightness(80%);
-  filter: brightness(80%);
+table caption button:not(table caption > button):hover,
+table tbody tr td button:not(table caption > button):hover {
+  -webkit-filter: brightness(85%);
+  filter: brightness(85%);
 }
 table tbody tr td button.delete-btn {
   background-color: var(--red);
@@ -380,7 +384,15 @@ footer p {
 }
 footer p a {
   font-family: "Pacifico", cursive;
-  /* font-weight: bold; */
   font-size: 22px;
-  color: var(--secondary-color);
+  color: var(--green);
+  transition: 0.25s ease-in-out;
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -ms-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+}
+footer p a:hover {
+  color: var(--yellow);
+  margin-inline: 2.5px;
 }

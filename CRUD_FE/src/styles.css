@@ -2,14 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Aboreto&family=IBM+Plex+Sans:wght@400;500;600;700&family=Pacifico&display=swap");
 :root {
   --primary-color: hsl(252, 96%, 62%);
-  --secondary-color: hsl(151, 100%, 50%);
   --green: hsl(151, 100%, 50%);
   --red: hsl(356, 83%, 41%);
   --yellow: hsl(55, 87%, 50%);
   --main-bg: hsl(256, 63%, 16%);
 }
 ::selection {
-  color: var(--secondary-color);
+  color: var(--green);
   background-color: #000;
 }
 ::-webkit-scrollbar {

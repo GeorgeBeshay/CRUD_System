@@ -52,17 +52,35 @@ export class MainPageComponent {
   async updateProduct() {
     let tempProduct = this.utilities.readProduct(this.currentProductId);
     let nameField = document.getElementById('product-name') as HTMLInputElement;
-    let amountField = document.getElementById('product-amount') as HTMLInputElement;
-    let priceField = document.getElementById('product-price') as HTMLInputElement;
-    let categoryField = document.getElementById('product-category') as HTMLInputElement;
-    let sellerField = document.getElementById('product-seller') as HTMLInputElement;
-    let discountField = document.getElementById('product-discount') as HTMLInputElement;
+    let amountField = document.getElementById(
+      'product-amount'
+    ) as HTMLInputElement;
+    let priceField = document.getElementById(
+      'product-price'
+    ) as HTMLInputElement;
+    let categoryField = document.getElementById(
+      'product-category'
+    ) as HTMLInputElement;
+    let sellerField = document.getElementById(
+      'product-seller'
+    ) as HTMLInputElement;
+    let discountField = document.getElementById(
+      'product-discount'
+    ) as HTMLInputElement;
     let nameLabel = document.getElementById('nameLabel') as HTMLLabelElement;
-    let amountLabel = document.getElementById('amountLabel') as HTMLLabelElement;
+    let amountLabel = document.getElementById(
+      'amountLabel'
+    ) as HTMLLabelElement;
     let priceLabel = document.getElementById('priceLabel') as HTMLLabelElement;
-    let categoryLabel = document.getElementById('categLabel') as HTMLLabelElement;
-    let sellerLabel = document.getElementById('sellerLabel') as HTMLLabelElement;
-    let discountLabel = document.getElementById('discountLabel') as HTMLLabelElement;
+    let categoryLabel = document.getElementById(
+      'categLabel'
+    ) as HTMLLabelElement;
+    let sellerLabel = document.getElementById(
+      'sellerLabel'
+    ) as HTMLLabelElement;
+    let discountLabel = document.getElementById(
+      'discountLabel'
+    ) as HTMLLabelElement;
 
     nameLabel.classList.remove('update');
     nameField.classList.remove('update');
@@ -86,7 +104,9 @@ export class MainPageComponent {
     if (this.utilities.validateProduct(tempProduct)) {
       let addBtn = document.getElementById('add-btn') as HTMLButtonElement;
       addBtn.style.display = 'inline-block';
-      let updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
+      let updateBtn = document.getElementById(
+        'update-btn'
+      ) as HTMLButtonElement;
       updateBtn.style.display = 'none';
 
       await this.serverCaller.update(tempProduct);
@@ -113,10 +133,17 @@ export class MainPageComponent {
       });
     }
     this.currentProductId = '000000';
+
+    let cancelBtn = document.getElementById('cancel-btn') as HTMLButtonElement;
+    cancelBtn.style.display = 'none';
+    let updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
+    updateBtn.style.display = 'none';
+    let addBtn = document.getElementById('add-btn') as HTMLButtonElement;
+    addBtn.style.display = 'inline-flex';
   }
 
-  async emptyDB() {
-    if (await this.utilities.emptyDb()) {
+  async deleteDisplayed() {
+    if (await this.utilities.deleteDisplayed()) {
       let temp = document.getElementById('productsHolder') as HTMLTableElement;
       let children = temp.children;
       console.log(children);

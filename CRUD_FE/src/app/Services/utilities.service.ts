@@ -67,14 +67,7 @@ export class UtilitiesService {
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Ok',
         timer: 5000,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.scrollTo({
-            top: 999999999,
-            left: 0,
-            behavior: 'smooth',
-          });
-        }
+        didClose: () => window.scrollTo(0, 99999999),
       });
     } else {
       Swal.fire({
@@ -161,9 +154,9 @@ export class UtilitiesService {
     let addBtn = document.getElementById('add-btn') as HTMLButtonElement;
     addBtn.style.display = 'none';
     let updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
-    updateBtn.style.display = 'inline-block';
+    updateBtn.style.display = 'inline-flex';
     let cancelBtn = document.getElementById('cancel-btn') as HTMLButtonElement;
-    cancelBtn.style.display = 'inline-block';
+    cancelBtn.style.display = 'inline-flex';
     // -------------------- Separator --------------------
     window.scrollTo({
       top: 0,
@@ -214,22 +207,41 @@ export class UtilitiesService {
 
     nameLabel.classList.remove('update');
     nameField.classList.remove('update');
+    nameLabel.classList.remove('active');
+    nameField.classList.remove('active');
     nameField.blur();
     amountLabel.classList.remove('update');
     amountField.classList.remove('update');
+    amountLabel.classList.remove('active');
+    amountField.classList.remove('active');
     amountField.blur();
     priceLabel.classList.remove('update');
     priceField.classList.remove('update');
+    priceLabel.classList.remove('active');
+    priceField.classList.remove('active');
     priceField.blur();
     categoryLabel.classList.remove('update');
     categoryField.classList.remove('update');
+    categoryLabel.classList.remove('active');
+    categoryField.classList.remove('active');
     categoryField.blur();
     sellerLabel.classList.remove('update');
     sellerField.classList.remove('update');
+    sellerLabel.classList.remove('active');
+    sellerField.classList.remove('active');
     sellerField.blur();
     discountLabel.classList.remove('update');
     discountField.classList.remove('update');
+    discountLabel.classList.remove('active');
+    discountField.classList.remove('active');
     discountField.blur();
+
+    let cancelBtn = document.getElementById('cancel-btn') as HTMLButtonElement;
+    cancelBtn.style.display = 'none';
+    let updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
+    updateBtn.style.display = 'none';
+    let addBtn = document.getElementById('add-btn') as HTMLButtonElement;
+    addBtn.style.display = 'inline-flex';
   }
 
   async confirmDeletion() {
@@ -280,9 +292,6 @@ export class UtilitiesService {
       document.querySelectorAll('input[type=number]')
     );
     for (let i = 0; i < nums.length; i++) {
-      nums[i].addEventListener('input', () => {
-        nums[i].value = nums[i].value.replace(/[e+-]/gi, '');
-      });
       nums[i].addEventListener('keydown', (e) => {
         if (invalidChars.includes(e.key)) {
           e.preventDefault();
@@ -291,7 +300,7 @@ export class UtilitiesService {
     }
   }
 
-  async emptyDb() {
+  async deleteDisplayed() {
     let confirmed = false;
     await Swal.fire({
       title: 'Are you sure you want to delete all the displayed products?',
