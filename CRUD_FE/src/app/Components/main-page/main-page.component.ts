@@ -114,16 +114,17 @@ export class MainPageComponent {
 
       document.forms[0].reset();
 
-      Swal.fire(
-        'Updated!',
-        'Your Product has been updated successfully.',
-        'success'
-      );
-      window.scrollTo({
-        top: 99999999,
-        left: 0,
-        behavior: 'smooth',
+      Swal.fire({
+        title: 'Updated!',
+        text: 'Your Product has been updated successfully.',
+        icon: 'success',
+        didClose: () => window.scrollTo(0, 999999),
       });
+      // window.scrollTo({
+      //   top: 99999999,
+      //   left: 0,
+      //   behavior: 'smooth',
+      // });
     } else {
       Swal.fire({
         icon: 'error',

@@ -386,13 +386,14 @@ footer p a {
   font-family: "Pacifico", cursive;
   font-size: 22px;
   color: var(--green);
-  transition: 0.25s ease-in-out;
-  -webkit-transition: 0.25s ease-in-out;
-  -moz-transition: 0.25s ease-in-out;
-  -ms-transition: 0.25s ease-in-out;
-  -o-transition: 0.25s ease-in-out;
+  padding: 0 5px;
+  transition: 0.4s ease-in-out;
+  -webkit-transition: 0.4s ease-in-out;
+  -moz-transition: 0.4s ease-in-out;
+  -ms-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
+  box-shadow: inset 0 0 0 0 black;
 }
 footer p a:hover {
-  color: var(--yellow);
-  margin-inline: 2.5px;
+  box-shadow: inset 200px 0 0 0 black;
 }

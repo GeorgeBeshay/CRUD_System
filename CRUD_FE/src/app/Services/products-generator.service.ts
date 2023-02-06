@@ -37,21 +37,19 @@ export class ProductsGeneratorService {
       );
       let tempPrice = document.createElement('td');
       tempPrice.appendChild(oldPrice);
+      // ---------------------- Separator ----------------------
+      let tempNewPrice = Number(
+        (
+          Number(tempProduct.price) -
+          Number((tempProduct.discountPercent * tempProduct.price) / 100)
+        ).toFixed(2)
+      );
       let newPrice = document.createElement('strong');
       newPrice.appendChild(
-        document.createTextNode(
-          String(
-            Number(tempProduct.price) -
-              Number(
-                (
-                  (tempProduct.discountPercent * tempProduct.price) /
-                  100
-                ).toFixed(2)
-              )
-          )
-        )
+        document.createTextNode(tempNewPrice.toLocaleString())
       );
       tempPrice.appendChild(newPrice);
+      // ---------------------- Separator ----------------------
       let tempSup = document.createElement('sup');
       tempSup.appendChild(document.createTextNode('$'));
       tempPrice.appendChild(tempSup);
