@@ -4,7 +4,7 @@
 
 The designs were created to the following widths:
 
--   Mobile: 375px
+-   Mobile: 410px
 -   Desktop: 1440px
 
 ## Colors
@@ -14,10 +14,6 @@ The designs were created to the following widths:
 -   Bluish Purple: hsl(252, 96%, 62%)
 
 ### Secondary
-
--   ArtyClick Ocean Green: hsl(150, 100%, 66%)
-
-### Neutral
 
 -   ArtyClick Ocean Green: hsl(150, 100%, 66%)
 -   Chili Pepper: hsl(356, 83%, 41%)
