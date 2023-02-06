@@ -4,29 +4,35 @@
 
 The designs were created to the following widths:
 
-- Mobile: 375px
-- Desktop: 1440px
+-   Mobile: 375px
+-   Desktop: 1440px
 
 ## Colors
 
 ### Primary
 
-- Light Cyan: hsl(193, 38%, 86%)
-- Neon Green: hsl(150, 100%, 66%)
+-   Bluish Purple: hsl(252, 96%, 62%)
 
 ### Secondary
 
-- Light Test: hsl(193, 38%, 74%)
+-   ArtyClick Ocean Green: hsl(150, 100%, 66%)
 
 ### Neutral
 
-- Grayish Blue: hsl(217, 19%, 38%)
-- Dark Grayish Blue: hsl(217, 19%, 24%)
-- Dark Blue: hsl(218, 23%, 16%)
+-   ArtyClick Ocean Green: hsl(150, 100%, 66%)
+-   Chili Pepper: hsl(356, 83%, 41%)
+-   Ripe Lemon: hsl(55, 87%, 50%)
+-   Haiti: hsl(256, 63%, 16%)
 
 ## Typography
 
 ### Font
 
-- Family: [Manrope](https://fonts.google.com/specimen/Manrope)
-- Weights: 800
+-   Family: [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans)
+-   Weights: 400, 500, 600, 700
+
+-   Family: [Pacifico](https://fonts.google.com/specimen/Pacifico)
+-   Weights: 400
+
+-   Family: [Aboreto](https://fonts.google.com/specimen/Aboreto)
+-   Weights: 400

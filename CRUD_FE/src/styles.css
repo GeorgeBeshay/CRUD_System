@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Aboreto&family=IBM+Plex+Serif:wght@400;500;600;700&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aboreto&family=IBM+Plex+Sans:wght@400;500;600;700&family=Pacifico&display=swap");
 :root {
-  --primary-color: #6440fb;
-  --secondary-color: #00ff84;
-  --green: #00ff84;
-  --red: #c1121f;
-  --yellow: #eedc11;
-  --main-bg: #1d0f42;
+  --primary-color: hsl(252, 96%, 62%);
+  --secondary-color: hsl(151, 100%, 50%);
+  --green: hsl(151, 100%, 50%);
+  --red: hsl(356, 83%, 41%);
+  --yellow: hsl(55, 87%, 50%);
+  --main-bg: hsl(256, 63%, 16%);
 }
 ::selection {
   color: var(--secondary-color);
@@ -30,7 +30,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: "IBM Plex Serif", serif;
+  font-family: "IBM Plex Sans", sans-serif;
   background-color: var(--main-bg);
   color: #fff;
 }

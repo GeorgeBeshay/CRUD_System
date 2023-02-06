@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../Interfaces/product';
 import * as JsBarcode from 'jsbarcode';
-import Swal from 'sweetalert2';
-import { ServerCallerService } from './server-caller.service';
 import { MainPageComponent } from '../Components/main-page/main-page.component';
 
 @Injectable({
@@ -96,17 +94,17 @@ export class ProductsGeneratorService {
 
       let tempEditButton = document.createElement('button');
       tempEditButton.classList.add('edit-btn');
-      tempEditButton.addEventListener('click', () =>
-        this.mainPage.editProduct(tempProduct)
-      );
+      tempEditButton.addEventListener('click', () => {
+        this.mainPage.editProduct(tempProduct);
+      });
       tempEditButton.appendChild(document.createTextNode('Edit'));
       tempAction.appendChild(tempEditButton);
 
       let tempDeleteButton = document.createElement('button');
       tempDeleteButton.classList.add('delete-btn');
-      tempDeleteButton.addEventListener('click', () =>
-        this.mainPage.deleteProduct(tempProduct)
-      );
+      tempDeleteButton.addEventListener('click', () => {
+        this.mainPage.deleteProduct(tempProduct);
+      });
       tempDeleteButton.appendChild(document.createTextNode('Delete'));
       tempAction.appendChild(tempDeleteButton);
       tempRow.appendChild(tempAction);
@@ -117,7 +115,6 @@ export class ProductsGeneratorService {
   }
 
   generateBarCode(id: string) {
-    console.log(document.getElementById(`svg-${id}`));
     JsBarcode(`#svg-${id}`, id, {
       format: 'msi',
       height: 35,
