@@ -70,5 +70,18 @@ public class RequestController_Primary {
 		System.out.println("Client Requested Product Deletion");
 		return serverCore.deleteProduct(product);
 	}
+	
+	/**
+	 * Function implements the product deletion - via the product id - taking the product id 
+	 * to be deleted as a parameter 
+	 * @param productId
+	 * @return
+	 */
+	@PostMapping(value = {"deleteById"})
+	public boolean deleteProduct(@RequestBody String productId) {
+		System.out.println("------------------------- Request -------------------------");
+		System.out.println("Client Requested Product Deletion - using the product Id -");
+		return serverCore.deleteProduct(productId);
+	}
 
 }

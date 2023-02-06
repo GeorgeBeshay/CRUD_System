@@ -17,7 +17,7 @@ export class MainPageComponent {
   private serverCaller: ServerCallerService;
   private productsGenerator: ProductsGeneratorService;
   protected utilities: UtilitiesService;
-  private currentProductId = '000000';
+  public currentProductId = '000000';
   constructor(private http: HttpClient) {
     this.serverCaller = new ServerCallerService(this.http);
     this.productsGenerator = new ProductsGeneratorService(this);
@@ -43,19 +43,19 @@ export class MainPageComponent {
     await this.runApplication();
   }
 
-  placeHolderFocus(id: any) {
-    document.getElementById(id)?.classList.add('active');
-    document.getElementById(id)?.nextElementSibling?.classList.add('active');
-  }
+  // placeHolderFocus(id: any) {
+  //   document.getElementById(id)?.classList.add('active');
+  //   document.getElementById(id)?.nextElementSibling?.classList.add('active');
+  // }
 
-  placeHolderBlur(id: any) {
-    let input = document.getElementById(id)
-      ?.nextElementSibling as HTMLInputElement;
-    if (input.value === '') {
-      document.getElementById(id)?.classList.remove('active');
-      input.classList.remove('active');
-    }
-  }
+  // placeHolderBlur(id: any) {
+  //   let input = document.getElementById(id)
+  //     ?.nextElementSibling as HTMLInputElement;
+  //   if (input.value === '') {
+  //     document.getElementById(id)?.classList.remove('active');
+  //     input.classList.remove('active');
+  //   }
+  // }
 
   async deleteProduct(product: Product) {
     if (await this.utilities.confirmDeletion()) {
@@ -147,11 +147,21 @@ export class MainPageComponent {
         timer: 5000,
       });
     }
+    this.currentProductId = '000000';
   }
 
   async emptyDB() {
     if (await this.utilities.emptyDb()) {
-      await this.serverCaller.emptyDB();
+      let temp = document.getElementById('productsHolder') as HTMLTableElement;
+      let children = temp.children;
+      console.log(children);
+      for (let i = 0; i < children.length; i++) {
+        let tempRow = <HTMLTableRowElement>children[i];
+        console.log(tempRow.id);
+        await this.serverCaller.deleteById(tempRow.id);
+      }
+      temp.innerHTML = ``;
+      // await this.serverCaller.emptyDB();
       await this.runApplication();
     }
   }

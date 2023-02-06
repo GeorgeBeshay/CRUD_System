@@ -48,6 +48,18 @@ public class ServerCore {
 		}
 	}
 	// ------------------------ Separator ------------------------
+	public boolean deleteProduct(String productId) {
+		this.updateStatusFlag = true;
+		if(!validateProductId(productId)) {
+			productRepository.deleteById(productId);
+			System.out.println("Product Has Been Deleted Successfully.");
+			return true;
+		} else {
+			System.out.println("Product Couldn't Be Found.");
+			return false;
+		}
+	}
+	// ------------------------ Separator ------------------------
 	public void updateProduct(Product product) {
 		this.updateStatusFlag = true;
 		productRepository.save(product);

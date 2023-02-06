@@ -171,6 +171,66 @@ export class UtilitiesService {
     });
   }
 
+  cancelEditing() {
+    let nameField = document.getElementById('product-name') as HTMLInputElement;
+    let amountField = document.getElementById(
+      'product-amount'
+    ) as HTMLInputElement;
+    let priceField = document.getElementById(
+      'product-price'
+    ) as HTMLInputElement;
+    let categoryField = document.getElementById(
+      'product-category'
+    ) as HTMLInputElement;
+    let sellerField = document.getElementById(
+      'product-seller'
+    ) as HTMLInputElement;
+    let discountField = document.getElementById(
+      'product-discount'
+    ) as HTMLInputElement;
+    let nameLabel = document.getElementById('nameLabel') as HTMLLabelElement;
+    let amountLabel = document.getElementById(
+      'amountLabel'
+    ) as HTMLLabelElement;
+    let priceLabel = document.getElementById('priceLabel') as HTMLLabelElement;
+    let categoryLabel = document.getElementById(
+      'categLabel'
+    ) as HTMLLabelElement;
+    let sellerLabel = document.getElementById(
+      'sellerLabel'
+    ) as HTMLLabelElement;
+    let discountLabel = document.getElementById(
+      'discountLabel'
+    ) as HTMLLabelElement;
+
+    nameField.value = '';
+    amountField.value = '';
+    priceField.value = '';
+    categoryField.value = '';
+    discountField.value = '';
+    sellerField.value = '';
+    this.mainPage.currentProductId = '000000';
+
+    nameLabel.classList.remove('update');
+    nameField.classList.remove('update');
+    nameField.blur();
+    amountLabel.classList.remove('update');
+    amountField.classList.remove('update');
+    amountField.blur();
+    priceLabel.classList.remove('update');
+    priceField.classList.remove('update');
+    priceField.blur();
+    categoryLabel.classList.remove('update');
+    categoryField.classList.remove('update');
+    categoryField.blur();
+    sellerLabel.classList.remove('update');
+    sellerField.classList.remove('update');
+    sellerField.blur();
+    discountLabel.classList.remove('update');
+    discountField.classList.remove('update');
+    discountField.blur();
+  }
+
   async confirmDeletion() {
     let confirmed = false;
     await Swal.fire({
@@ -233,7 +293,7 @@ export class UtilitiesService {
   async emptyDb() {
     let confirmed = false;
     await Swal.fire({
-      title: 'Are you sure you want to delete all products?',
+      title: 'Are you sure you want to delete all the displayed products?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -244,7 +304,7 @@ export class UtilitiesService {
       if (result.isConfirmed) {
         Swal.fire({
           title: 'Deleted!',
-          text: 'All Products have been deleted successfully.',
+          text: 'Displayed Products have been deleted successfully.',
           icon: 'success',
           timer: 5000,
         });
@@ -262,5 +322,19 @@ export class UtilitiesService {
       barcode += numbers[Math.floor(Math.random() * numbers.length)];
     }
     return barcode;
+  }
+
+  placeHolderFocus(id: any) {
+    document.getElementById(id)?.classList.add('active');
+    document.getElementById(id)?.nextElementSibling?.classList.add('active');
+  }
+
+  placeHolderBlur(id: any) {
+    let input = document.getElementById(id)
+      ?.nextElementSibling as HTMLInputElement;
+    if (input.value === '') {
+      document.getElementById(id)?.classList.remove('active');
+      input.classList.remove('active');
+    }
   }
 }

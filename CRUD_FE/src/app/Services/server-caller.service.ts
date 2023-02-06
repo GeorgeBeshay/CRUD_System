@@ -34,10 +34,16 @@ export class ServerCallerService {
       this.http.post<boolean>(this.url + 'delete', product)
     );
   }
-  // Function requests to check for updates.
-  async emptyDB() {
-    return await firstValueFrom(this.http.post(this.url + 'empty', null));
+  // Function requests to delete a product - via the product id - and remove it from the DB.
+  async deleteById(productId: string) {
+    return await firstValueFrom(
+      this.http.post<boolean>(this.url + 'deleteById', productId)
+    );
   }
+  // Function requests to check for updates.
+  // async emptyDB() {
+  //   return await firstValueFrom(this.http.post(this.url + 'empty', null));
+  // }
   // Function requests to check for updates.
   async checkForUpdates() {
     return await firstValueFrom(
