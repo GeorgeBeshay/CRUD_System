@@ -27,10 +27,12 @@ The designs were created to the following widths:
 -   Family: [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans)
 -   Weights: 400, 500, 600, 700
 
+---
 
 -   Family: [Pacifico](https://fonts.google.com/specimen/Pacifico)
 -   Weights: 400
 
+---
 
 -   Family: [Aboreto](https://fonts.google.com/specimen/Aboreto)
 -   Weights: 400
