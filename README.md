@@ -32,7 +32,7 @@ Users should be able to:
 ### Links
 
 -   Live Site URL: [Github Pages](https://georgebeshay.github.io/CRUD_System/)
--   Video URL: [Demo Video]()
+-   LinkedIn Post Containing the Demo Video: [Post](https://www.linkedin.com/posts/gswb_javaspringboot-angular-webapplication-activity-7028676896775122944-A55u?utm_source=share&utm_medium=member_desktop)
 
 ## Our process
 
