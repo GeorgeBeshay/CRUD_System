@@ -11,6 +11,7 @@
     -   [Built with](#built-with)
     -   [What we learned](#what-we-learned)
     -   [Useful resources](#useful-resources)
+    -   [How To Use](#how-to-use)
 -   [Authors](#authors)
 
 ## Overview
@@ -22,7 +23,6 @@ Users should be able to:
 -   Load all products from database.
 -   Add new products.
 -   Delete products.
--   Empty database.
 -   Update products' data.
 -   Search by proudct's name/category/seller.
 -   View a unique barcode and ID for each product.
@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
--   Live Site URL: [Github Pages](https://lorem.github.io/lorem/)
--   Live Site URL: [Vercel App](https://lorem.vercel.app/)
+-   Live Site URL: [Github Pages](https://georgebeshay.github.io/CRUD_System/)
+-   Video URL: [Demo Video]()
 
 ## Our process
 
@@ -42,9 +42,11 @@ Users should be able to:
 -   CSS Custom Properties
 -   AngularJS
 -   TypeScript
--   Java
--   Spring Boot
+-   Java Spring Boot
 -   MongoDB
+-   Postman API
+-   Sweetalert2
+-   JsBarcode	
 
 ### What We learned
 
@@ -58,7 +60,7 @@ function generateID() {
     }
     return barcode;
 }
-function generateBarCode(id: string) {
+function generateBarCode(id) {
     JsBarcode(`#svg-${id}`, id, {
         format: "msi",
         height: 35,
@@ -74,13 +76,33 @@ function generateBarCode(id: string) {
     });
 }
 ```
+```java
+public ArrayList<Product> meetCriteria(List<Product> products, String str) {
+		ArrayList<Product> good = new ArrayList<Product>();
+		for(Product product : products) {
+			if(product.getName().contains(str)) 
+				good.add(product);
+		}
+		return good;
+}
+```
 
 ### Useful resources
 
 -   [AngularJS Docs](https://angular.io/docs)
 -   [JsBarcode](https://lindell.me/JsBarcode/)
 -   [Sweetalert2](https://sweetalert2.github.io/)
+-   [Java Spring Boot Documentation](https://spring.io/projects/spring-boot)
+-   [MongoDB Documentation](https://www.mongodb.com/docs/)
 -   [Material Icons](https://developers.google.com/fonts/docs/material_icons)
+-   [JsBarcode Problem](https://stackoverflow.com/questions/73009513/jabarcode-not-show-in-div-generate-by-js)
+
+### How To Use
+- Download the repository zip folder
+- Install the front end required dependencies using the terminal command `npm install`
+- Run the back end server on your device.
+- Open your browser and go to `localhost:4200/`
+
 
 ## Authors
 
